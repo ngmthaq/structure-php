@@ -1,2 +1,22 @@
+# NPM
 /node_modules
+
+# Composer
 /vendor
+
+# Cached
+/cached/logs/*
+/cached/views/*
+/cached/temp/*
+!/cached/logs/.gitkeep
+!/cached/views/.gitkeep
+!/cached/temp/.gitkeep
+
+# Public
+/public/bundles/*
+!/public/bundles/.gitkeep
+
+# ENV
+/.env
+/.env.*
+!/.env.example

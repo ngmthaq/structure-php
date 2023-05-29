@@ -1,19 +1,20 @@
 {
-    "name": "thang/structure-php",
-    "description": "PHP Structure",
-    "type": "project",
-    "license": "MIT",
-    "autoload": {
-        "psr-4": {
-            "App\\": "app/"
-        }
-    },
-    "authors": [
-        {
-            "name": "Nguyễn Mạnh Thắng",
-            "email": "nguyenmanhthang2000.fb@gmail.com"
-        }
-    ],
-    "minimum-stability": "dev",
-    "require": {}
+  "name": "thang/structure-php",
+  "description": "PHP Structure",
+  "type": "project",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "App\\": "app/",
+      "Configs\\": "configs/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Nguyễn Mạnh Thắng",
+      "email": "nguyenmanhthang2000.fb@gmail.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {}
 }
