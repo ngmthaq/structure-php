@@ -2,17 +2,25 @@
 
 namespace App\Controllers;
 
-use eftec\bladeone\BladeOne;
+use App\Responses\Response;
+use PDO;
 
 abstract class BaseController
 {
-    protected function view(string $name, array $data = [], int $code = STT_OK)
-    {
-        view($name, $data, $code);
-    }
+    protected PDO $conn;
 
-    protected function  json(array $data, int $code = STT_OK, string $mesage = "Empty")
+    protected Response $res;
+
+    public function __construct()
     {
-        json($data, $code, $mesage);
+        $db_host = $_ENV["DB_HOST"];
+        $db_port = $_ENV["DB_PORT"];
+        $db_username = $_ENV["DB_USERNAME"];
+        $db_password = $_ENV["DB_PASSWORD"];
+        $db_table_name = $_ENV["DB_TABLE_NAME"];
+        $conn = new PDO("mysql:host=$db_host;port=$db_port;dbname=$db_table_name", $db_username, $db_password);
+        $GLOBALS["conn"] = $conn;
+        $this->conn = $conn;
+        $this->res = new Response();
     }
 }
