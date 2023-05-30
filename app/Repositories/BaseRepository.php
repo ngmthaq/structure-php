@@ -2,14 +2,14 @@
 
 namespace App\Repositories;
 
-use PDO;
+use Database;
 
 abstract class BaseRepository
 {
-    protected PDO $conn;
+    protected Database $db;
 
     public function __construct()
     {
-        $this->conn = $GLOBALS["conn"];
+        $this->db = $GLOBALS["database"];
     }
 }

@@ -2,14 +2,14 @@
 
 namespace App\Models;
 
-use PDO;
+use Database;
 
 abstract class BaseModel
 {
-    protected PDO $conn;
+    protected Database $db;
 
     public function __construct()
     {
-        $this->conn = $GLOBALS["conn"];
+        $this->db = $GLOBALS["database"];
     }
 }

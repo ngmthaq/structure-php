@@ -2,25 +2,19 @@
 
 namespace App\Controllers;
 
-use App\Responses\Response;
-use PDO;
+use App\Responses\BaseResponse;
+use Database;
 
 abstract class BaseController
 {
-    protected PDO $conn;
+    protected Database $db;
 
-    protected Response $res;
+    protected BaseResponse $res;
 
     public function __construct()
     {
-        $db_host = $_ENV["DB_HOST"];
-        $db_port = $_ENV["DB_PORT"];
-        $db_username = $_ENV["DB_USERNAME"];
-        $db_password = $_ENV["DB_PASSWORD"];
-        $db_table_name = $_ENV["DB_TABLE_NAME"];
-        $conn = new PDO("mysql:host=$db_host;port=$db_port;dbname=$db_table_name", $db_username, $db_password);
-        $GLOBALS["conn"] = $conn;
-        $this->conn = $conn;
-        $this->res = new Response();
+        $this->res = new BaseResponse();
+        $this->db = new Database();
+        $GLOBALS["databasse"] = $this->db;
     }
 }

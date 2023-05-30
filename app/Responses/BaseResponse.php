@@ -2,7 +2,7 @@
 
 namespace App\Responses;
 
-final class Response
+final class BaseResponse
 {
     public function view(string $name, array $data = [], int $code = STT_OK)
     {

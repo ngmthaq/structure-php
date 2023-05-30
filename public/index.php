@@ -16,6 +16,7 @@ require_once("../vendor/autoload.php");
 require_once("../configs/application.php");
 require_once("../configs/directory.php");
 require_once("../configs/helpers.php");
+require_once("../configs/database.php");
 
 /**
  * Import router configs
