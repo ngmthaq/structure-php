@@ -1,5 +1,7 @@
 <?php
 
+use Dotenv\Dotenv;
+
 final class Router
 {
     private array $routes = [METHOD_GET => [], METHOD_POST => []];
@@ -16,6 +18,7 @@ final class Router
 
     final public function register()
     {
+        Dotenv::createImmutable(DIR)->load();
         $method = $this->getRequestMethod();
         $routes = $this->routes[$method];
         $uri = $this->getRequestUri();

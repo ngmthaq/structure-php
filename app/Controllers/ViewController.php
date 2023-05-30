@@ -7,6 +7,6 @@ class ViewController extends BaseController
 {
     public function index()
     {
-        dump($_SERVER);
+        $this->view("home");
     }
 }
