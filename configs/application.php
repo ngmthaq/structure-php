@@ -14,5 +14,5 @@ define("STT_INTERNAL_SERVER_ERROR", 500);
 define("STT_SERVICE_UNAVAILABLE", 503);
 define("STT_TIMEOUT", 504);
 
-define("METHOD_GET", "GET");
-define("METHOD_POST", "POST");
+define("METHOD_GET", "get");
+define("METHOD_POST", "post");
