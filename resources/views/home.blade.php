@@ -10,6 +10,7 @@
 
 <body>
 
+    <script src="{{ public_path('bundles/main.bundle.js') }}"></script>
 </body>
 
 </html>

@@ -34,3 +34,8 @@ function json(array $data, int $code = STT_OK, string $mesage = "Empty")
     $response = ["message" => $mesage, "code" => $code, "data" => $data];
     echo json_encode($response);
 }
+
+function public_path(string $path)
+{
+    return "./" . $path;
+}
