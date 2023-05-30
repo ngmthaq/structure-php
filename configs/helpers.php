@@ -37,5 +37,5 @@ function json(array $data, int $code = STT_OK, string $mesage = "Empty")
 
 function public_path(string $path)
 {
-    return "./" . $path;
+    return "./$path?t=" . time();
 }
