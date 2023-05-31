@@ -16,3 +16,6 @@ define("STT_TIMEOUT", 504);
 
 define("METHOD_GET", "get");
 define("METHOD_POST", "post");
+
+define("LOG_STATUS_INFO", "INFO");
+define("LOG_STATUS_ERROR", "ERROR");

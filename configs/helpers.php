@@ -10,7 +10,7 @@ function dump(mixed $data)
     echo "<br/>";
 }
 
-function dumpAndDie(mixed $data)
+function dump_and_die(mixed $data)
 {
     dump($data);
     die();
@@ -38,4 +38,14 @@ function json(array $data, int $code = STT_OK, string $mesage = "Empty")
 function public_path(string $path)
 {
     return "./$path?t=" . time();
+}
+
+function write_log(string $file_name, string $message, string $status = LOG_STATUS_INFO)
+{
+    $date = gmdate("Y_m_d") . "_utc";
+    $path = DIR_CACHED . DIRECTORY_SEPARATOR . "logs" . DIRECTORY_SEPARATOR . $file_name . "_" . $date . ".log";
+    if (!file_exists($path)) touch($path);
+    $time = "[" . gmdate("H:i:s") . "-UTC]";
+    $content = $time . " - " . $status . ": " . $message . PHP_EOL;
+    file_put_contents($path, $content, FILE_APPEND);
 }

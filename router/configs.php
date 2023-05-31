@@ -18,19 +18,28 @@ final class Router
 
     final public function register()
     {
-        Dotenv::createImmutable(DIR)->load();
-        $method = $this->getRequestMethod();
-        $routes = $this->routes[$method];
-        $uri = $this->getRequestUri();
+        try {
+            Dotenv::createImmutable(DIR)->load();
+            $method = $this->getRequestMethod();
+            $routes = $this->routes[$method];
+            $uri = $this->getRequestUri();
 
-        if (array_key_exists($uri, $routes)) {
-            $route = $routes[$uri];
-            $controller = $route["controller"];
-            $action = $route["action"];
-            $instance = new $controller();
-            $instance->$action();
-        } else {
-            http_response_code(STT_NOT_FOUND);
+            if (array_key_exists($uri, $routes)) {
+                $route = $routes[$uri];
+                $controller = $route["controller"];
+                $action = $route["action"];
+                $instance = new $controller();
+                $instance->$action();
+            } else {
+                http_response_code(STT_NOT_FOUND);
+            }
+        } catch (\Throwable $th) {
+            $msg = "Application got an error:" . PHP_EOL;
+            $msg .= "## " . $th->getFile() . "(" . $th->getLine() . "): " . $th->getMessage();
+            $msg .= PHP_EOL;
+            $msg .= $th->getTraceAsString();
+            write_log("error", $msg, LOG_STATUS_ERROR);
+            http_response_code(STT_INTERNAL_SERVER_ERROR);
         }
     }
 

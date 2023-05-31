@@ -35,18 +35,28 @@ final class Database
 
     public function execute()
     {
-        $stm = $this->conn->prepare($this->sql);
-        if ($stm) {
-            foreach ($this->values as $data) {
-                $param = $data["param"];
-                $value = $data["value"];
-                $type = $data["type"];
-                $stm->bindValue($param, $value, $type);
+        try {
+            $stm = $this->conn->prepare($this->sql);
+            if ($stm) {
+                foreach ($this->values as $data) {
+                    $param = $data["param"];
+                    $value = $data["value"];
+                    $type = $data["type"];
+                    $stm->bindValue($param, $value, $type);
+                }
+                $stm->execute();
+                $msg = "SQL: $this->sql, params: " . json_encode($this->values);
+                write_log("db", $msg);
+                return $stm;
             }
-            $stm->execute();
-            return $stm;
+            $msg = "SQL: $this->sql, params: " . json_encode($this->values) . ", message: Cannot create PDOStatement";
+            write_log("db", $msg, LOG_STATUS_ERROR);
+            return false;
+        } catch (\Throwable $th) {
+            $msg = "SQL: $this->sql, params: " . json_encode($this->values) . ", message: " . $th->getMessage();
+            write_log("db", $msg, LOG_STATUS_ERROR);
+            return false;
         }
-        return false;
     }
 
     public function reset()
@@ -57,16 +67,19 @@ final class Database
 
     public function begin()
     {
+        write_log("db", "BEGIN TRANSACTION");
         $this->conn->beginTransaction();
     }
 
     public function commit()
     {
+        write_log("db", "COMMIT TRANSACTION");
         $this->conn->commit();
     }
 
     public function rollBack()
     {
+        write_log("db", "ROLLBACK TRANSACTION");
         $this->conn->rollBack();
     }
 }
