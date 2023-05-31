@@ -15,6 +15,10 @@ abstract class BaseController
     {
         $this->res = new BaseResponse();
         $this->db = new Database();
-        $GLOBALS["database"] = $this->db;
+        $GLOBALS[GLOBALS_DATABASE] = $this->db;
+
+        if (empty($_SESSION[KEY_CSRF_TOKEN])) {
+            $_SESSION[KEY_CSRF_TOKEN] = uuid();
+        }
     }
 }

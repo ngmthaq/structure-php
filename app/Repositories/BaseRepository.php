@@ -10,6 +10,6 @@ abstract class BaseRepository
 
     public function __construct()
     {
-        $this->db = $GLOBALS["database"];
+        $this->db = $GLOBALS[GLOBALS_DATABASE];
     }
 }

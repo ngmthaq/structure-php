@@ -19,3 +19,7 @@ define("METHOD_POST", "post");
 
 define("LOG_STATUS_INFO", "INFO");
 define("LOG_STATUS_ERROR", "ERROR");
+
+define("GLOBALS_DATABASE", "database");
+
+define("KEY_CSRF_TOKEN", "csrf-token");

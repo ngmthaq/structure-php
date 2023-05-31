@@ -49,3 +49,8 @@ function writeLog(string $fileName, string $message, string $status = LOG_STATUS
     $content = $time . " - " . $status . ": " . $message . PHP_EOL;
     file_put_contents($path, $content, FILE_APPEND);
 }
+
+function uuid()
+{
+    return vsprintf('%s%s-%s-%s-%s-%s%s', str_split(bin2hex(random_bytes(16)), 4));
+}

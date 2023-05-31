@@ -5,15 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    @stack('meta')
+    <title>@yield('title')</title>
+    @stack('css')
 </head>
 
 <body>
-    <div id="home">
-        Home
-    </div>
-
-    <script src="{{ assets('bundles/main.bundle.js') }}"></script>
+    <div id="base">@yield('content')</div>
+    <script src="{{ assets('bundles/index.bundle.js') }}"></script>
+    @stack('js')
 </body>
 
 </html>
