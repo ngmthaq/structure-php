@@ -9,6 +9,9 @@
 </head>
 
 <body>
+    <div id="home">
+        Home
+    </div>
 
     <script src="{{ assets('bundles/main.bundle.js') }}"></script>
 </body>

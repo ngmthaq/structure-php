@@ -15,6 +15,6 @@ abstract class BaseController
     {
         $this->res = new BaseResponse();
         $this->db = new Database();
-        $GLOBALS["databasse"] = $this->db;
+        $GLOBALS["database"] = $this->db;
     }
 }

@@ -6,7 +6,13 @@ use App\Repositories\UserRepository;
 
 class UserService extends BaseService
 {
-    private UserRepository $userRepo = new UserRepository();
+    private UserRepository $userRepo;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->userRepo = new UserRepository();
+    }
 
     public function getAllUsers(): array
     {
