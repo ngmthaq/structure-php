@@ -10,11 +10,24 @@ PHP version 8.1.10 (cli) (built: Aug 30 2022 18:05:49) (ZTS Visual C++ 2019 x64)
     - User logout
     - User change password
     - Admin create account for user
-    - Admin change user information
+    - Admin edit user information
     - Grant access for user
+        - Create/edit user account
+        - Create/edit group
     - Message
         - Direct message
         - Group message
+        - Actions
+            - Edit
+            - Delete
+            - Reply
+            - Reaction
+            - Another send type
+                - Image
+                - Video
+                - Audio
+                - Link
+                - Another
     - Calendar
         - Meeting plan (with notification)
         - Self note
