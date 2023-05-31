@@ -9,7 +9,7 @@ final class BaseResponse
         view($name, $data, $code);
     }
 
-    public function  json(array $data, int $code = STT_OK, string $mesage = "Empty")
+    public function  json(array $data, int $code = STT_OK, string $mesage = "OK")
     {
         json($data, $code, $mesage);
     }
