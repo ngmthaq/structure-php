@@ -11,6 +11,7 @@ PHP version 8.1.10 (cli) (built: Aug 30 2022 18:05:49) (ZTS Visual C++ 2019 x64)
     - User change password
     - Admin create account for user
     - Admin change user information
+    - Grant access for user
     - Message
         - Direct message
         - Group message
