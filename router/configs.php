@@ -38,7 +38,7 @@ final class Router
             $msg .= "## " . $th->getFile() . "(" . $th->getLine() . "): " . $th->getMessage();
             $msg .= PHP_EOL;
             $msg .= $th->getTraceAsString();
-            write_log("error", $msg, LOG_STATUS_ERROR);
+            writeLog("error", $msg, LOG_STATUS_ERROR);
             http_response_code(STT_INTERNAL_SERVER_ERROR);
         }
     }

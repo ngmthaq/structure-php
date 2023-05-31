@@ -3,19 +3,17 @@
 final class Database
 {
     protected PDO $conn;
-
     protected array $values;
-
     protected string $sql;
 
     public function __construct()
     {
-        $db_host = $_ENV["DB_HOST"];
-        $db_port = $_ENV["DB_PORT"];
-        $db_username = $_ENV["DB_USERNAME"];
-        $db_password = $_ENV["DB_PASSWORD"];
-        $db_table_name = $_ENV["DB_TABLE_NAME"];
-        $conn = new PDO("mysql:host=$db_host;port=$db_port;dbname=$db_table_name", $db_username, $db_password);
+        $dbHost = $_ENV["DB_HOST"];
+        $dbPort = $_ENV["DB_PORT"];
+        $dbUsername = $_ENV["DB_USERNAME"];
+        $dbPassword = $_ENV["DB_PASSWORD"];
+        $dbTableName = $_ENV["DB_TABLE_NAME"];
+        $conn = new PDO("mysql:host=$dbHost;port=$dbPort;dbname=$dbTableName", $dbUsername, $dbPassword);
         $conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $this->conn = $conn;
@@ -46,15 +44,15 @@ final class Database
                 }
                 $stm->execute();
                 $msg = "SQL: $this->sql, params: " . json_encode($this->values);
-                write_log("db", $msg);
+                writeLog("db", $msg);
                 return $stm;
             }
             $msg = "SQL: $this->sql, params: " . json_encode($this->values) . ", message: Cannot create PDOStatement";
-            write_log("db", $msg, LOG_STATUS_ERROR);
+            writeLog("db", $msg, LOG_STATUS_ERROR);
             return false;
         } catch (\Throwable $th) {
             $msg = "SQL: $this->sql, params: " . json_encode($this->values) . ", message: " . $th->getMessage();
-            write_log("db", $msg, LOG_STATUS_ERROR);
+            writeLog("db", $msg, LOG_STATUS_ERROR);
             return false;
         }
     }
@@ -67,19 +65,19 @@ final class Database
 
     public function begin()
     {
-        write_log("db", "BEGIN TRANSACTION");
+        writeLog("db", "BEGIN TRANSACTION");
         $this->conn->beginTransaction();
     }
 
     public function commit()
     {
-        write_log("db", "COMMIT TRANSACTION");
+        writeLog("db", "COMMIT TRANSACTION");
         $this->conn->commit();
     }
 
     public function rollBack()
     {
-        write_log("db", "ROLLBACK TRANSACTION");
+        writeLog("db", "ROLLBACK TRANSACTION");
         $this->conn->rollBack();
     }
 }
