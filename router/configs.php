@@ -31,7 +31,7 @@ final class Router
                 $instance = new $controller();
                 $instance->$action();
             } else {
-                http_response_code(STT_NOT_FOUND);
+                view("errors.404", [], STT_NOT_FOUND);
             }
         } catch (\Throwable $th) {
             $msg = "Application got an error:" . PHP_EOL;
@@ -39,6 +39,7 @@ final class Router
             $msg .= PHP_EOL;
             $msg .= $th->getTraceAsString();
             $error = ["message" => $msg];
+            if ($_ENV["APP_ENV"] === "prod") $error = ["message" => ""];
             writeLog("error", $msg, LOG_STATUS_ERROR);
             view("errors.500", $error, STT_INTERNAL_SERVER_ERROR);
         }

@@ -5,9 +5,11 @@
 @endsection
 
 @section('content')
-    <code id="error_message" data-message="{{ $message }}"></code>
-    <h1>500</h1>
-    <p>Server Internal Error</p>
+    <div class="error-context">
+        <code id="error_message" data-message="{{ $message }}"></code>
+        <h1>500</h1>
+        <p>Server Internal Error</p>
+    </div>
 @endsection
 
 @push('js')
