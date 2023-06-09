@@ -4,7 +4,8 @@
     "yarn",
     "php81",
     "php81Packages.composer",
-    "php81Extensions.ds"
+    "php81Extensions.ds",
+    "apacheHttpd"
   ],
   "includes": ["plugin:php"],
   "shell": {
