@@ -24,7 +24,13 @@ function view(string $name, array $data = [], int $code = STT_OK)
     $blade->pipeEnable = true;
     header('Content-Type: text/html; charset=utf-8');
     http_response_code($code);
+    ob_start();
     echo $blade->run($name, $data);
+    $content = ob_get_contents();
+    ob_clean();
+    $content = trim(preg_replace('/\s\s+/', ' ', $content));
+    echo "<!-- Copyright Nguyen Manh Thang (C) -->";
+    echo $content;
 }
 
 function json(array $data, int $code = STT_OK, string $mesage = "Empty")

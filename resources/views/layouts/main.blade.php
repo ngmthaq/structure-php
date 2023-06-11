@@ -1,7 +1,7 @@
 @extends('layouts.base')
 
 @section('base')
-    <div id="error-layout">
+    <div id="main-layout">
         @yield('content')
     </div>
 @endsection

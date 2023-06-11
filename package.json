@@ -7,22 +7,24 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "npx webpack -c ./webpack.config.js --mode development --watch",
-    "build": "npx webpack -c ./webpack.config.js --mode production -d false"
+    "build": "npx webpack -c ./webpack.config.js --mode production --no-color -d false"
   },
   "author": "Nguyễn Mạnh Thắng",
   "license": "ISC",
   "devDependencies": {
     "@types/lodash": "^4.14.195",
     "css-loader": "^6.8.1",
+    "mini-css-extract-plugin": "^2.7.6",
+    "postcss-loader": "^7.3.3",
     "sass": "^1.62.1",
     "sass-loader": "^13.3.1",
     "style-loader": "^3.3.3",
-    "ts-loader": "^9.4.3",
-    "typescript": "^5.0.4",
     "webpack": "^5.84.1",
     "webpack-cli": "^5.1.1"
   },
   "dependencies": {
+    "bootstrap": "^5.3.0",
+    "bootstrap-icons": "^1.10.5",
     "lodash": "^4.17.21"
   }
 }

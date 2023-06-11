@@ -1,11 +1,11 @@
-@extends('layouts.base')
+@extends('layouts.main')
 
 @section('title')
-    API Documentation
+    Homepage
 @endsection
 
 @section('content')
-    <h1>API documentation will come here soon</h1>
+    <h1>Homepage <i class="bi bi-1-circle"></i></h1>
 @endsection
 
 @push('js')
