@@ -20,5 +20,12 @@ abstract class BaseController
         if (empty($_SESSION[KEY_CSRF_TOKEN])) {
             $_SESSION[KEY_CSRF_TOKEN] = uuid();
         }
+
+        if (isset($_SERVER["REQUEST_METHOD"]) && strtoupper($_SERVER["REQUEST_METHOD"]) === "POST") {
+            if (empty($_POST[KEY_CSRF_TOKEN]) || (isset($_POST[KEY_CSRF_TOKEN]) && $_POST[KEY_CSRF_TOKEN] !== $_SESSION[KEY_CSRF_TOKEN])) {
+                view("errors.403", [], STT_FORBIDDEN);
+                exit();
+            }
+        }
     }
 }

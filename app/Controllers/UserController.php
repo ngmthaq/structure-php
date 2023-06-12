@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Requests\BaseRequest;
 use App\Services\UserService;
 
 class UserController extends BaseController
@@ -18,5 +19,11 @@ class UserController extends BaseController
     {
         $users = $this->userService->getAllUsers();
         $this->res->json(compact("users"));
+    }
+
+    public function login()
+    {
+        $req = new BaseRequest();
+        dump($req->inputs);
     }
 }

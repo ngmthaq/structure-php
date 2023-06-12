@@ -1,13 +1,13 @@
 @extends('layouts.error')
 
 @section('title')
-    Not Found
+    Forbidden
 @endsection
 
 @section('content')
     <div class="error-context">
-        <h1>404</h1>
-        <p>Page Not Found</p>
+        <h1>403</h1>
+        <p>You are not authorized to access this link</p>
     </div>
 @endsection
 

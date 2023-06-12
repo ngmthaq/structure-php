@@ -23,3 +23,7 @@ define("LOG_STATUS_ERROR", "ERROR");
 define("GLOBALS_DATABASE", "database");
 
 define("KEY_CSRF_TOKEN", "csrf-token");
+define("KEY_AUTH_TOKEN", "auth-token");
+
+define("TEMPLATE_AUTH_TOKEN_SPLITTER", "|");
+define("TEMPLATE_AUTH_TOKEN", ":token" . TEMPLATE_AUTH_TOKEN_SPLITTER . ":uuid");

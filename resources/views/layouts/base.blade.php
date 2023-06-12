@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="shortcut icon" href="{{ assets('img/favicon.ico') }}" type="image/x-icon">
     <title>@yield('title')</title>
+    {{ csrfMetaTag() }}
     @stack('head')
     @stack('meta')
     @stack('css')

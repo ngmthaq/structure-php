@@ -29,11 +29,11 @@ function view(string $name, array $data = [], int $code = STT_OK)
     $content = ob_get_contents();
     ob_clean();
     $content = trim(preg_replace('/\s\s+/', ' ', $content));
-    echo "<!-- Copyright Nguyen Manh Thang (C) -->";
+    echo "<!-- Copyright Nguyen Manh Thang (C) --> ";
     echo $content;
 }
 
-function json(array $data, int $code = STT_OK, string $mesage = "Empty")
+function json(array $data, int $code = STT_OK, string $mesage = "OK")
 {
     header('Content-Type: application/json; charset=utf-8');
     http_response_code($code);
@@ -59,4 +59,18 @@ function writeLog(string $fileName, string $message, string $status = LOG_STATUS
 function uuid()
 {
     return vsprintf('%s%s-%s-%s-%s-%s%s', str_split(bin2hex(random_bytes(16)), 4));
+}
+
+function csrfInputTag()
+{
+    $token = $_SESSION[KEY_CSRF_TOKEN];
+    $name = KEY_CSRF_TOKEN;
+    echo "<input type=\"hidden\" name=\"$name\" value=\"$token\" />";
+}
+
+function csrfMetaTag()
+{
+    $token = $_SESSION[KEY_CSRF_TOKEN];
+    $name = KEY_CSRF_TOKEN;
+    echo "<meta name=\"$name\" content=\"$token\" />";
 }
