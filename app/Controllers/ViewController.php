@@ -8,4 +8,9 @@ class ViewController extends BaseController
     {
         $this->res->view("pages.home");
     }
+
+    public function login()
+    {
+        $this->res->view("pages.login");
+    }
 }

@@ -5,12 +5,12 @@
 @endsection
 
 @section('content')
-    <form action="/login" method="post">
-        {{ csrfInputTag() }}
-        <input type="text" name="email" id="email" placeholder="Email" autocomplete="email">
-        <input type="password" name="password" id="password" placeholder="Password" autocomplete="current-password">
-        <button type="submit" name="login" value="login-button">Login</button>
-    </form>
+    <h1>Hello {{ isset(auth()->user) ? auth()->user->name : 'Guest' }}</h1>
+    @if (!auth()->authCheck())
+        <a href="/login">Login</a>
+    @else
+        <a href="/logout">Logout</a>
+    @endif
 @endsection
 
 @push('js')
