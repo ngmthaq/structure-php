@@ -34,8 +34,11 @@ function view(string $name, array $data = [], int $code = STT_OK)
     echo $blade->run($name, array_merge($data, compact("flashMessage")));
     $content = ob_get_contents();
     ob_clean();
-    $content = trim(preg_replace('/\s\s+/', ' ', $content));
-    echo "<!-- Copyright Nguyen Manh Thang (C) --> ";
+    $content = trim(preg_replace('/(\s\s+)|(\n)|(\t)/', " ", $content));
+    $year = gmdate("Y");
+    echo "<!-- Copyright(C) Nguyen Manh Thang 2022-$year --> ";
+    echo "<!-- Homepage: https://ngmthaq.github.io/ --> ";
+    echo "<!-- Contact: nguyenmanhthang2000.fb@gmail.com --> ";
     echo $content;
 }
 
