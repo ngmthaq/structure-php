@@ -9,7 +9,10 @@
     @if (!auth()->authCheck())
         <a href="/login">Login</a>
     @else
-        <a href="/logout">Logout</a>
+        <form action="/logout" method="post">
+            {{ csrfInputTag() }}
+            <button type="submit" name="button" value="logout">Logout</button>
+        </form>
     @endif
 @endsection
 
